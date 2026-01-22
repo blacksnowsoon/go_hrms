@@ -1,5 +1,5 @@
 import frappe
-from frappe import get_url
+
 
 @frappe.whitelist()
 def upload_logo_and_set():
