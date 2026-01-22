@@ -1,0 +1,139 @@
+{
+ "actions": [],
+ "creation": "2026-01-16 18:10:39.895128",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "limits_section",
+  "max_hours_per_permission",
+  "max_permisson_per_month",
+  "column_break_znws",
+  "allow_retroactive",
+  "effective_from",
+  "applicability_rules_section",
+  "apply_late",
+  "column_break_qtbl",
+  "apply_early",
+  "column_break_ulys",
+  "count_by_month",
+  "section_break_xaot",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "limits_section",
+   "fieldtype": "Section Break",
+   "label": "Limits"
+  },
+  {
+   "default": "2",
+   "description": "Max hours per request",
+   "fieldname": "max_hours_per_permission",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Max Permission Hours",
+   "non_negative": 1,
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "default": "3",
+   "description": "Per employee each month",
+   "fieldname": "max_permisson_per_month",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Max Permission / Month",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_znws",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_retroactive",
+   "fieldtype": "Check",
+   "label": "Allow Retroactive Permission"
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From"
+  },
+  {
+   "fieldname": "applicability_rules_section",
+   "fieldtype": "Section Break",
+   "label": "Applicability Rules"
+  },
+  {
+   "default": "1",
+   "fieldname": "apply_late",
+   "fieldtype": "Check",
+   "label": "Apply to Late Entry"
+  },
+  {
+   "fieldname": "column_break_qtbl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "apply_early",
+   "fieldtype": "Check",
+   "label": "Apply to Early Exit"
+  },
+  {
+   "fieldname": "column_break_ulys",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "count_by_month",
+   "fieldtype": "Check",
+   "label": "Count Permissions Per Month"
+  },
+  {
+   "fieldname": "section_break_xaot",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Text Editor",
+   "label": "Remarks"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-01-16 18:22:07.014267",
+ "modified_by": "Administrator",
+ "module": "Go Hrms",
+ "name": "Attendance Permission Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
