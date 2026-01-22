@@ -1,25 +1,29 @@
 app_name = "go_hrms"
-app_title = "Go Hrms"
+app_title = "Go-Smart HR Suite"
 app_publisher = "Gharieb Khalifa"
-app_description = "An custom app built to hold the frappe hrms customization"
+app_description = "GO-Smart HR Suite is a customized HRMS solution developed using Frappe Framework and Frappe HRMS as the core platform"
 app_email = "blacksnow.soon@gmail.com"
 app_license = "mit"
 
+
+fixtures=[
+    "Translation"
+]
 # Apps
 # ------------------
 
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "go_hrms",
-# 		"logo": "/assets/go_hrms/logo.png",
-# 		"title": "Go Hrms",
-# 		"route": "/go_hrms",
-# 		"has_permission": "go_hrms.api.permission.has_app_permission"
-# 	}
-# ]
+add_to_apps_screen = [
+	{
+		"name": "go_hrms",
+		"logo": "/assets/go_hrms/logo.png",
+		"title": "Go-Smart HR Suite",
+		"route": "/go_hrms",
+		"has_permission": "go_hrms.api.permission.has_app_permission"
+	}
+]
 
 # Includes in <head>
 # ------------------
@@ -84,7 +88,12 @@ app_license = "mit"
 
 # before_install = "go_hrms.install.before_install"
 # after_install = "go_hrms.install.after_install"
-
+after_install = [
+    "go_hrms.customization.app_setting.upload_logo_and_set"
+]
+after_migrate = [
+    "go_hrms.customization.app_setting.upload_logo_and_set"
+]
 # Uninstallation
 # ------------
 
