@@ -18,9 +18,9 @@ fixtures=[
 add_to_apps_screen = [
 	{
 		"name": "go_hrms",
-		"logo": "/assets/go_hrms/logo.png",
+		"logo": "/assets/go_hrms/images/go-150-170.png",
 		"title": "Go-Smart HR Suite",
-		"route": "/go_hrms",
+		# "route": "/go_hrms",
 		"has_permission": "go_hrms.api.permission.has_app_permission"
 	}
 ]
@@ -29,11 +29,11 @@ add_to_apps_screen = [
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/go_hrms/css/go_hrms.css"
+app_include_css = ["/assets/go_hrms/css/custom_style.css"]
 # app_include_js = "/assets/go_hrms/js/go_hrms.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/go_hrms/css/go_hrms.css"
+web_include_css = ["/assets/go_hrms/css/custom_style.css"]
 # web_include_js = "/assets/go_hrms/js/go_hrms.js"
 
 # include custom scss in every website theme (without file extension ".scss")
