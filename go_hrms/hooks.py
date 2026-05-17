@@ -6,9 +6,9 @@ app_email = "blacksnow.soon@gmail.com"
 app_license = "mit"
 
 
-fixtures=[
-    "Translation"
-]
+# fixtures=[
+#     "Translation"
+# ]
 # Apps
 # ------------------
 
