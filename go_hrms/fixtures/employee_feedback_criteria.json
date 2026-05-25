@@ -1,0 +1,114 @@
+[
+ {
+  "criteria": "Leadership & Team Coordination",
+  "custom_description": "Lead and organize team efforts",
+  "docstatus": 0,
+  "doctype": "Employee Feedback Criteria",
+  "modified": "2026-05-23 14:59:03.092101",
+  "name": "Leadership & Team Coordination"
+ },
+ {
+  "criteria": "Communication",
+  "custom_description": "Clear communication with stakeholders",
+  "docstatus": 0,
+  "doctype": "Employee Feedback Criteria",
+  "modified": "2026-05-23 14:59:46.978234",
+  "name": "Communication"
+ },
+ {
+  "criteria": "Decision Making",
+  "custom_description": "Make effective operational decisions",
+  "docstatus": 0,
+  "doctype": "Employee Feedback Criteria",
+  "modified": "2026-05-23 14:59:36.489618",
+  "name": "Decision Making"
+ },
+ {
+  "criteria": "Initiative & Ownership",
+  "custom_description": "Take responsibility proactively",
+  "docstatus": 0,
+  "doctype": "Employee Feedback Criteria",
+  "modified": "2026-05-23 14:59:26.205198",
+  "name": "Initiative & Ownership"
+ },
+ {
+  "criteria": "Problem Solving",
+  "custom_description": "Handle challenges efficiently",
+  "docstatus": 0,
+  "doctype": "Employee Feedback Criteria",
+  "modified": "2026-05-23 14:59:16.031757",
+  "name": "Problem Solving"
+ },
+ {
+  "criteria": "Analytical Thinking",
+  "custom_description": "Analyze processes/problems effectively",
+  "docstatus": 0,
+  "doctype": "Employee Feedback Criteria",
+  "modified": "2026-05-23 15:06:30.079099",
+  "name": "Analytical Thinking"
+ },
+ {
+  "criteria": "Documentation Quality",
+  "custom_description": "Produce organized documentation",
+  "docstatus": 0,
+  "doctype": "Employee Feedback Criteria",
+  "modified": "2026-05-23 15:10:00.598589",
+  "name": "Documentation Quality"
+ },
+ {
+  "criteria": "Teamwork & Collaboration",
+  "custom_description": "Work effectively with teams",
+  "docstatus": 0,
+  "doctype": "Employee Feedback Criteria",
+  "modified": "2026-05-23 15:09:50.623399",
+  "name": "Teamwork & Collaboration"
+ },
+ {
+  "criteria": "Technical Expertise",
+  "custom_description": "Demonstrate technical capability",
+  "docstatus": 0,
+  "doctype": "Employee Feedback Criteria",
+  "modified": "2026-05-23 15:15:10.086617",
+  "name": "Technical Expertise"
+ },
+ {
+  "criteria": "Troubleshooting Ability",
+  "custom_description": "Diagnose and resolve issues",
+  "docstatus": 0,
+  "doctype": "Employee Feedback Criteria",
+  "modified": "2026-05-23 15:14:59.205529",
+  "name": "Troubleshooting Ability"
+ },
+ {
+  "criteria": "Compliance with Procedures",
+  "custom_description": "Follow operational/security policies",
+  "docstatus": 0,
+  "doctype": "Employee Feedback Criteria",
+  "modified": "2026-05-23 15:14:49.384755",
+  "name": "Compliance with Procedures"
+ },
+ {
+  "criteria": "Accuracy & Attention to Detail",
+  "custom_description": "Minimize operational errors",
+  "docstatus": 0,
+  "doctype": "Employee Feedback Criteria",
+  "modified": "2026-05-23 15:34:17.287226",
+  "name": "Accuracy & Attention to Detail"
+ },
+ {
+  "criteria": "Discipline & Professionalism",
+  "custom_description": "Maintain operational discipline, attendance adherence to working schedules",
+  "docstatus": 0,
+  "doctype": "Employee Feedback Criteria",
+  "modified": "2026-05-23 15:38:09.900453",
+  "name": "Discipline & Professionalism"
+ },
+ {
+  "criteria": "Customer Service Orientation",
+  "custom_description": "Handle users professionally",
+  "docstatus": 0,
+  "doctype": "Employee Feedback Criteria",
+  "modified": "2026-05-23 15:33:28.975571",
+  "name": "Customer Service Orientation"
+ }
+]

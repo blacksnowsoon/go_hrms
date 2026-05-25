@@ -1,0 +1,444 @@
+[
+ {
+  "description": "Positions\nPM",
+  "docstatus": 0,
+  "doctype": "Appraisal Template",
+  "goals": [
+   {
+    "key_result_area": "Project Delivery Timeliness",
+    "parent": "PM Template",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 15.0
+   },
+   {
+    "key_result_area": "Scope & Change Management",
+    "parent": "PM Template",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0
+   },
+   {
+    "key_result_area": "Stakeholder Satisfaction",
+    "parent": "PM Template",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 25.0
+   },
+   {
+    "key_result_area": "Risk & Issue Resolution",
+    "parent": "PM Template",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 25.0
+   },
+   {
+    "key_result_area": "Resource & Task Coordination",
+    "parent": "PM Template",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 15.0
+   }
+  ],
+  "modified": "2026-05-23 15:02:25.102597",
+  "name": "PM Template",
+  "rating_criteria": [
+   {
+    "criteria": "Leadership & Team Coordination",
+    "parent": "PM Template",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Communication",
+    "parent": "PM Template",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Decision Making",
+    "parent": "PM Template",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Initiative & Ownership",
+    "parent": "PM Template",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Problem Solving",
+    "parent": "PM Template",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   }
+  ],
+  "template_title": "PM Template"
+ },
+ {
+  "description": null,
+  "docstatus": 0,
+  "doctype": "Appraisal Template",
+  "goals": [
+   {
+    "key_result_area": "Requirements Documentation",
+    "parent": "BA / Operations BA",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0
+   },
+   {
+    "key_result_area": "Process Analysis & Improvement",
+    "parent": "BA / Operations BA",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 25.0
+   },
+   {
+    "key_result_area": "UAT Coordination",
+    "parent": "BA / Operations BA",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 15.0
+   },
+   {
+    "key_result_area": "Reporting & Analysis Delivery",
+    "parent": "BA / Operations BA",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0
+   },
+   {
+    "key_result_area": "Operational Support Resolution",
+    "parent": "BA / Operations BA",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0
+   }
+  ],
+  "modified": "2026-05-23 15:09:27.549717",
+  "name": "BA / Operations BA",
+  "rating_criteria": [
+   {
+    "criteria": "Analytical Thinking",
+    "parent": "BA / Operations BA",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Communication",
+    "parent": "BA / Operations BA",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Documentation Quality",
+    "parent": "BA / Operations BA",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Problem Solving",
+    "parent": "BA / Operations BA",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Teamwork & Collaboration",
+    "parent": "BA / Operations BA",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   }
+  ],
+  "template_title": "BA / Operations BA"
+ },
+ {
+  "description": null,
+  "docstatus": 0,
+  "doctype": "Appraisal Template",
+  "goals": [
+   {
+    "key_result_area": "System & Network Availability",
+    "parent": "System Admin / Network Admin",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 15.0
+   },
+   {
+    "key_result_area": "Incident Resolution SLA",
+    "parent": "System Admin / Network Admin",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0
+   },
+   {
+    "key_result_area": "Preventive Maintenance Completion",
+    "parent": "System Admin / Network Admin",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0
+   },
+   {
+    "key_result_area": "Security & Access Compliance",
+    "parent": "System Admin / Network Admin",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0
+   },
+   {
+    "key_result_area": "Technical Support Efficiency",
+    "parent": "System Admin / Network Admin",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 25.0
+   }
+  ],
+  "modified": "2026-05-23 15:14:25.503433",
+  "name": "System Admin / Network Admin",
+  "rating_criteria": [
+   {
+    "criteria": "Technical Expertise",
+    "parent": "System Admin / Network Admin",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Troubleshooting Ability",
+    "parent": "System Admin / Network Admin",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Leadership & Team Coordination",
+    "parent": "System Admin / Network Admin",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Initiative & Ownership",
+    "parent": "System Admin / Network Admin",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Compliance with Procedures",
+    "parent": "System Admin / Network Admin",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   }
+  ],
+  "template_title": "System Admin / Network Admin"
+ },
+ {
+  "description": null,
+  "docstatus": 0,
+  "doctype": "Appraisal Template",
+  "goals": [
+   {
+    "key_result_area": "Transaction Processing Completion",
+    "parent": "Data Entry",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0
+   },
+   {
+    "key_result_area": "Operational Reporting Completion",
+    "parent": "Data Entry",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 15.0
+   },
+   {
+    "key_result_area": "Workflow Processing Efficiency",
+    "parent": "Data Entry",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0
+   },
+   {
+    "key_result_area": "Shift Transaction Throughput",
+    "parent": "Data Entry",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 15.0
+   },
+   {
+    "key_result_area": "Data Entry Timeliness",
+    "parent": "Data Entry",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 15.0
+   },
+   {
+    "key_result_area": "Service Request Handling",
+    "parent": "Data Entry",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 15.0
+   }
+  ],
+  "modified": "2026-05-23 15:29:44.075011",
+  "name": "Data Entry",
+  "rating_criteria": [
+   {
+    "criteria": "Accuracy & Attention to Detail",
+    "parent": "Data Entry",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Discipline & Professionalism",
+    "parent": "Data Entry",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Communication",
+    "parent": "Data Entry",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Compliance with Procedures",
+    "parent": "Data Entry",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Teamwork & Collaboration",
+    "parent": "Data Entry",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   }
+  ],
+  "template_title": "Data Entry"
+ },
+ {
+  "description": null,
+  "docstatus": 0,
+  "doctype": "Appraisal Template",
+  "goals": [
+   {
+    "key_result_area": "Ticket Resolution SLA",
+    "parent": "IT Help Desk",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0
+   },
+   {
+    "key_result_area": "First Response Time",
+    "parent": "IT Help Desk",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0
+   },
+   {
+    "key_result_area": "Ticket Closure Rate",
+    "parent": "IT Help Desk",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0
+   },
+   {
+    "key_result_area": "Escalation Handling",
+    "parent": "IT Help Desk",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0
+   },
+   {
+    "key_result_area": "Ticket Documentation Completion",
+    "parent": "IT Help Desk",
+    "parentfield": "goals",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0
+   }
+  ],
+  "modified": "2026-05-23 15:33:15.258291",
+  "name": "IT Help Desk",
+  "rating_criteria": [
+   {
+    "criteria": "Customer Service Orientation",
+    "parent": "IT Help Desk",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Communication",
+    "parent": "IT Help Desk",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Problem Solving",
+    "parent": "IT Help Desk",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Discipline & Professionalism",
+    "parent": "IT Help Desk",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   },
+   {
+    "criteria": "Teamwork & Collaboration",
+    "parent": "IT Help Desk",
+    "parentfield": "rating_criteria",
+    "parenttype": "Appraisal Template",
+    "per_weightage": 20.0,
+    "rating": 0.0
+   }
+  ],
+  "template_title": "IT Help Desk"
+ }
+]

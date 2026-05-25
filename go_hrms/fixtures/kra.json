@@ -1,0 +1,218 @@
+[
+ {
+  "description": "Deliver projects/tasks on schedule",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 14:52:48.280219",
+  "name": "Project Delivery Timeliness",
+  "title": "Project Delivery Timeliness"
+ },
+ {
+  "description": "Manage requirements and change requests",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 14:53:10.228956",
+  "name": "Scope & Change Management",
+  "title": "Scope & Change Management"
+ },
+ {
+  "description": "Maintain coordination with business/users",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 14:53:33.511968",
+  "name": "Stakeholder Satisfaction",
+  "title": "Stakeholder Satisfaction"
+ },
+ {
+  "description": "Resolve blockers/escalations effectively",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 14:54:01.196889",
+  "name": "Risk & Issue Resolution",
+  "title": "Risk & Issue Resolution"
+ },
+ {
+  "description": "Ensure proper team/task allocation",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 14:54:21.649125",
+  "name": "Resource & Task Coordination",
+  "title": "Resource & Task Coordination"
+ },
+ {
+  "description": "Deliver clear and complete requirements",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:04:11.342277",
+  "name": "Requirements Documentation",
+  "title": "Requirements Documentation"
+ },
+ {
+  "description": "Improve operational/business workflows",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:04:29.097476",
+  "name": "Process Analysis & Improvement",
+  "title": "Process Analysis & Improvement"
+ },
+ {
+  "description": "Support testing and issue validation",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:04:45.267774",
+  "name": "UAT Coordination",
+  "title": "UAT Coordination"
+ },
+ {
+  "description": "Deliver operational reports/analysis",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:05:00.414534",
+  "name": "Reporting & Analysis Delivery",
+  "title": "Reporting & Analysis Delivery"
+ },
+ {
+  "description": "Handle user/process issues effectively",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:05:26.739014",
+  "name": "Operational Support Resolution",
+  "title": "Operational Support Resolution"
+ },
+ {
+  "description": "Maintain uptime/stability",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:11:42.537181",
+  "name": "System & Network Availability",
+  "title": "System & Network Availability"
+ },
+ {
+  "description": "Resolve technical issues on time",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:11:58.416810",
+  "name": "Incident Resolution SLA",
+  "title": "Incident Resolution SLA"
+ },
+ {
+  "description": "Complete maintenance activities",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:12:14.633740",
+  "name": "Preventive Maintenance Completion",
+  "title": "Preventive Maintenance Completion"
+ },
+ {
+  "description": "Maintain secure operations",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:12:28.148769",
+  "name": "Security & Access Compliance",
+  "title": "Security & Access Compliance"
+ },
+ {
+  "description": "Support Help Desk/escalations",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:12:44.701161",
+  "name": "Technical Support Efficiency",
+  "title": "Technical Support Efficiency"
+ },
+ {
+  "description": "Complete assigned operations/tasks",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:17:07.016589",
+  "name": "Transaction Processing Completion",
+  "title": "Transaction Processing Completion"
+ },
+ {
+  "description": "Complete required reports/logs",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:18:07.039500",
+  "name": "Operational Reporting Completion",
+  "title": "Operational Reporting Completion"
+ },
+ {
+  "description": "Maintain operational throughput",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:18:35.128734",
+  "name": "Workflow Processing Efficiency",
+  "title": "Workflow Processing Efficiency"
+ },
+ {
+  "description": "Workflow Processing Efficiency",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:21:23.995706",
+  "name": "Shift Transaction Throughput",
+  "title": "Shift Transaction Throughput"
+ },
+ {
+  "description": "Data Integrity for Transaction Accuracy",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:24:34.104855",
+  "name": "Data Accuracy",
+  "title": "Data Accuracy"
+ },
+ {
+  "description": "Enter/process data on time",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:26:25.635154",
+  "name": "Data Entry Timeliness",
+  "title": "Data Entry Timeliness"
+ },
+ {
+  "description": "Process requests accurately/on time",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:28:22.272475",
+  "name": "Service Request Handling",
+  "title": "Service Request Handling"
+ },
+ {
+  "description": "Resolve tickets within target time",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:30:49.481939",
+  "name": "Ticket Resolution SLA",
+  "title": "Ticket Resolution SLA"
+ },
+ {
+  "description": "Respond to users quickly",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:31:23.306224",
+  "name": "First Response Time",
+  "title": "First Response Time"
+ },
+ {
+  "description": "Complete assigned tickets efficiently",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:31:38.610530",
+  "name": "Ticket Closure Rate",
+  "title": "Ticket Closure Rate"
+ },
+ {
+  "description": "Properly escalate unresolved issues",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:31:58.648777",
+  "name": "Escalation Handling",
+  "title": "Escalation Handling"
+ },
+ {
+  "description": "Maintain proper issue records",
+  "docstatus": 0,
+  "doctype": "KRA",
+  "modified": "2026-05-23 15:32:13.504147",
+  "name": "Ticket Documentation Completion",
+  "title": "Ticket Documentation Completion"
+ }
+]
