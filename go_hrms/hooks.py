@@ -95,9 +95,9 @@ web_include_css = ["/assets/go_hrms/css/custom_style.css"]
 after_install = [
     "go_hrms.customization.app_setting.upload_logo_and_set"
 ]
-after_migrate = [
-    "go_hrms.customization.app_setting.upload_logo_and_set"
-]
+# after_migrate = [
+#     "go_hrms.customization.app_setting.upload_logo_and_set"
+# ]
 # Uninstallation
 # ------------
 
