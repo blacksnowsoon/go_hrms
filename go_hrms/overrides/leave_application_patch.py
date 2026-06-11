@@ -10,10 +10,7 @@ _original_method = LeaveApplication.create_leave_ledger_entry
 
 def custom_create_leave_ledger_entry(self, submit=True):
 
-    multiplier = get_leave_multiplier(
-        self.employee,
-        self.leave_type
-    )
+    multiplier = get_leave_multiplier(self)
 
     original_days = self.total_leave_days
 

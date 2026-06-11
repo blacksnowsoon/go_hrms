@@ -9,8 +9,8 @@ def get_leave_multiplier(self):
     leave_type = frappe.get_cached_doc("Leave Type", self.leave_type)
 
     if (
-        employee.is_rotational_shift_employee
-        and leave_type.apply_rotational_multiplier
+        employee.custom_is_rotational_shift_employee
+        and leave_type.custom_apply_rotational_multiplier
     ):
         return 2
 
