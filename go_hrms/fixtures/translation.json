@@ -1415,5 +1415,18 @@
   "name": "lkdcpr5ho7",
   "source_text": "Automated Based on Goal Progress",
   "translated_text": "يتم التنفيذ تلقائيًا بناءً على التقدم المحرز في تحقيق الهدف"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ar",
+  "modified": "2026-05-27 23:20:16.845880",
+  "name": "d097bieum9",
+  "source_text": "Are you sure you want to log out?",
+  "translated_text": "هل ترغب في تسجيل الخروج؟"
  }
 ]

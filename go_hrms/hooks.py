@@ -10,8 +10,8 @@ fixtures=[
     "KRA",
 	"Employee Feedback Criteria",
 	"Appraisal Template",
-	"Translation"
-	
+	"Translation",
+	"Client Script"
 ]
 # Apps
 # ------------------

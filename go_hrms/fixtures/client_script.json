@@ -1,0 +1,24 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Leave Application",
+  "enabled": 1,
+  "modified": "2026-06-11 23:40:41.644815",
+  "module": "Go Hrms",
+  "name": "Adjust Deducted Leave Days",
+  "script": "frappe.ui.form.on('Leave Application', {\n\trefresh(frm) {\n\t\t// your code here\n\t},\n\tto_date(frm) {\n\t    adjust_deducted_leave_days(frm);\n    }\n});\n\nfunction adjust_deducted_leave_days(frm) {\n    \n    if (!frm.doc.leave_type) return;\n    \n    frappe.call({\n            method: \"frappe.client.get_value\",\n            args: {\n                doctype: \"Leave Type\",\n                filters: {\n                    name: frm.doc.leave_type\n                },\n                fieldname: [\n                    \"custom_apply_rotational_multiplier\"\n                ]\n            },\n            callback(r) {\n                const multiplier = r.message.custom_apply_rotational_multiplier ? 2 : 1;\n                const total = frm.doc.total_leave_days || 0;\n    \n                frm.set_value(\"custom_deducted_leave_days\", total * multiplier || 1);\n            }\n        });\n\n    \n}",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Leave Policy",
+  "enabled": 1,
+  "modified": "2026-06-15 13:06:55.709026",
+  "module": "Go Hrms",
+  "name": "Calculate Total Leave Days in Policy",
+  "script": "frappe.ui.form.on('Leave Policy', {\n\trefresh(frm) {\n\t\tcalculate_total_leave_days(frm);\n\t}\n})\n\nfrappe.ui.form.on('Leave Policy Detail', {\n\trefresh(frm) {\n\t\t// your code here\n\t},\n\tannual_allocation(frm, cdt, cdn) {\n        calculate_total_leave_days(frm);\n    },\n\n    leave_policy_details_remove(frm) {\n        calculate_total_leave_days(frm);\n    }\n});\n\nfunction calculate_total_leave_days(frm) {\n    let total = 0;\n\n    (frm.doc.leave_policy_details || []).forEach(row => {\n        total += flt(row.annual_allocation || 0);\n    });\n\n    frm.set_value(\"custom_total_leave_days\", total);\n}\n\n",
+  "view": "Form"
+ }
+]
