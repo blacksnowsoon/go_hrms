@@ -1,0 +1,93 @@
+{% extends "templates/base.html" %}
+
+{% block title %}PDF to Excel Converter{% endblock %}
+
+{% block head_include %}
+<link rel="stylesheet" href="/assets/go_hrms/css/file_converter_style.css">
+{% endblock %}
+
+{% block content %}
+<div class="converter-wrapper">
+	<div class="converter-card">
+		<div class="converter-header">
+			<h1 class="converter-title">PDF to Excel Converter</h1>
+			<p class="converter-subtitle">Upload or drop your PDF file to convert it to an Excel sheet. Support for tables and Arabic text.</p>
+		</div>
+
+		<div class="converter-body">
+			<!-- Dropzone Area -->
+			<div id="dropzone" class="dropzone-area">
+				<div class="dropzone-info">
+					<div class="upload-icon-wrapper">
+						<svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+						</svg>
+					</div>
+					<p class="upload-text">Drag and drop your PDF here, or <span class="browse-link">browse files</span></p>
+					<p class="upload-hint">Supports text-based PDF files up to 10MB</p>
+				</div>
+				<input type="file" id="file-input" accept="application/pdf" style="display: none;">
+			</div>
+
+			<!-- Processing / Spinner Area (Hidden by default) -->
+			<div id="processing-state" class="state-container hidden">
+				<div class="spinner"></div>
+				<h3 class="state-title">Converting File...</h3>
+				<p class="state-description">Please wait while we parse your PDF and build the Excel sheet.</p>
+				<div class="current-file-badge">
+					<span id="processing-filename">document.pdf</span>
+				</div>
+			</div>
+
+			<!-- Success Area (Hidden by default) -->
+			<div id="success-state" class="state-container hidden">
+				<div class="success-icon-wrapper">
+					<svg class="success-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+					</svg>
+				</div>
+				<h3 class="state-title">Conversion Complete!</h3>
+				<p class="state-description">Your PDF has been successfully converted to Excel format.</p>
+
+				<div class="file-details">
+					<div class="file-details-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+						</svg>
+					</div>
+					<div class="file-details-info">
+						<div id="success-filename" class="filename-text">converted.xlsx</div>
+						<div id="success-filesize" class="filesize-text">120 KB</div>
+					</div>
+				</div>
+
+				<div class="action-buttons">
+					<button id="download-btn" class="btn btn-primary btn-lg download-btn">
+						<svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+						</svg>
+						Download Excel
+					</button>
+					<button id="reset-btn" class="btn btn-secondary reset-btn">Convert Another File</button>
+				</div>
+			</div>
+
+			<!-- Error Area (Hidden by default) -->
+			<div id="error-state" class="state-container hidden">
+				<div class="error-icon-wrapper">
+					<svg class="error-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+					</svg>
+				</div>
+				<h3 class="state-title text-danger">Conversion Failed</h3>
+				<p id="error-message" class="state-description text-danger">An error occurred during file parsing.</p>
+				<button id="error-reset-btn" class="btn btn-secondary reset-btn">Try Again</button>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="/assets/go_hrms/js/file_converter.js"></script>
+{% endblock %}

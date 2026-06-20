@@ -33,11 +33,11 @@ add_to_apps_screen = [
 # ------------------
 
 # include js, css files in header of desk.html
-app_include_css = ["/assets/go_hrms/css/custom_style.css"]
+# app_include_css = ["/assets/go_hrms/css/custom_style.css"]
 # app_include_js = "/assets/go_hrms/js/go_hrms.js"
 
 # include js, css files in header of web template
-web_include_css = ["/assets/go_hrms/css/custom_style.css"]
+# web_include_css = ["/assets/go_hrms/css/custom_style.css"]
 # web_include_js = "/assets/go_hrms/js/go_hrms.js"
 
 # include custom scss in every website theme (without file extension ".scss")
@@ -60,6 +60,10 @@ web_include_css = ["/assets/go_hrms/css/custom_style.css"]
 # ------------------
 # include app icons in desk
 # app_include_icons = "go_hrms/public/icons.svg"
+
+website_route_rules = [
+    { "from_route": "/app/tools/file-converter", "to_route": "tools/file_converter" }
+]
 
 # Home Pages
 # ----------
