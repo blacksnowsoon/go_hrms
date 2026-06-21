@@ -74,6 +74,7 @@ def convert_pdf_to_excel():
 			extracted_text += page.extract_text() or ""
 
 		cleaned_text = extracted_text.strip()
+		frappe.errprint(f"extracted text : {cleaned_text}")
 		if len(cleaned_text) < 10:
 			frappe.local.response['http_status_code'] = 400
 			return {"error": "The PDF appears to be scanned or contains no extractable text. Scanned PDFs requiring OCR are not supported."}

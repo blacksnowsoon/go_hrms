@@ -4,10 +4,10 @@
   "doctype": "Client Script",
   "dt": "Leave Application",
   "enabled": 1,
-  "modified": "2026-06-11 23:40:41.644815",
+  "modified": "2026-06-19 00:17:33.481799",
   "module": "Go Hrms",
   "name": "Adjust Deducted Leave Days",
-  "script": "frappe.ui.form.on('Leave Application', {\n\trefresh(frm) {\n\t\t// your code here\n\t},\n\tto_date(frm) {\n\t    adjust_deducted_leave_days(frm);\n    }\n});\n\nfunction adjust_deducted_leave_days(frm) {\n    \n    if (!frm.doc.leave_type) return;\n    \n    frappe.call({\n            method: \"frappe.client.get_value\",\n            args: {\n                doctype: \"Leave Type\",\n                filters: {\n                    name: frm.doc.leave_type\n                },\n                fieldname: [\n                    \"custom_apply_rotational_multiplier\"\n                ]\n            },\n            callback(r) {\n                const multiplier = r.message.custom_apply_rotational_multiplier ? 2 : 1;\n                const total = frm.doc.total_leave_days || 0;\n    \n                frm.set_value(\"custom_deducted_leave_days\", total * multiplier || 1);\n            }\n        });\n\n    \n}",
+  "script": "frappe.ui.form.on('Leave Application', {\n\trefresh(frm) {\n\t\t// your code here\n\t},\n\tto_date(frm) {\n\t    adjust_deducted_leave_days(frm);\n    },\n    half_day(frm) {\n        adjust_deducted_leave_days(frm);\n    }\n});\n\nfunction adjust_deducted_leave_days(frm) {\n    \n    if (!frm.doc.leave_type) return;\n    \n    frappe.call({\n            method: \"frappe.client.get_value\",\n            args: {\n                doctype: \"Leave Type\",\n                filters: {\n                    name: frm.doc.leave_type\n                },\n                fieldname: [\n                    \"custom_apply_rotational_multiplier\"\n                ]\n            },\n            callback(r) {\n                const multiplier = r.message.custom_apply_rotational_multiplier ? 2 : 1;\n                const total = frm.doc.total_leave_days || 0;\n    \n                frm.set_value(\"custom_deducted_leave_days\", total * multiplier || 1);\n            }\n        });\n\n    \n}",
   "view": "Form"
  },
  {
