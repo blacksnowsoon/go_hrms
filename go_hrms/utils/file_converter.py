@@ -71,7 +71,7 @@ def convert_pdf_to_excel():
 		# 5. Extract text and validate OCR requirements (plain mode for quick check)
 		extracted_text = ""
 		for page in reader.pages:
-			extracted_text += page.extract_text() or ""
+			extracted_text += page.extract_text(extraction_mode="layout") or ""
 
 		cleaned_text = extracted_text.strip()
 		frappe.errprint(f"extracted text : {cleaned_text}")
@@ -93,6 +93,8 @@ def convert_pdf_to_excel():
 			# Use layout mode to preserve inter-column spacing.
 			# Arabic glyph ordering is fixed by _fix_arabic_layout() below.
 			page_text = page.extract_text(extraction_mode="layout") or ""
+			# page_text = page.extract_text(extraction_mode="plain") or ""
+			# frappe.log_error(f"page_text: {page_text}")
 			lines = page_text.splitlines()
 
 			for line in lines:
@@ -102,9 +104,10 @@ def convert_pdf_to_excel():
 
 				# Split into columns using 2+ spaces (layout mode preserves visual spacing)
 				parts = re.split(r' {2,}', stripped_line)
-
+				
 				# Filter empty parts, then fix any split Arabic character runs
 				parts = [_fix_arabic_layout(p).strip() for p in parts if p.strip()]
+				# parts = [p.strip() for p in parts if p.strip()]
 				if not parts:
 					continue
 
