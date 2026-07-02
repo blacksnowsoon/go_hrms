@@ -5,15 +5,17 @@
  "engine": "InnoDB",
  "field_order": [
   "limits_section",
-  "max_hours_per_permission",
+  "max_minutes_per_permission",
   "max_permisson_per_month",
-  "column_break_znws",
   "allow_retroactive",
+  "column_break_znws",
   "effective_from",
   "applicability_rules_section",
-  "apply_late",
+  "allow_late_entry",
   "column_break_qtbl",
-  "apply_early",
+  "allow_early_exit",
+  "column_break_yard",
+  "allow_partial_coverage",
   "column_break_ulys",
   "count_by_month",
   "section_break_xaot",
@@ -24,17 +26,6 @@
    "fieldname": "limits_section",
    "fieldtype": "Section Break",
    "label": "Limits"
-  },
-  {
-   "default": "2",
-   "description": "Max hours per request",
-   "fieldname": "max_hours_per_permission",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Max Permission Hours",
-   "non_negative": 1,
-   "precision": "2",
-   "reqd": 1
   },
   {
    "default": "3",
@@ -67,20 +58,8 @@
    "label": "Applicability Rules"
   },
   {
-   "default": "1",
-   "fieldname": "apply_late",
-   "fieldtype": "Check",
-   "label": "Apply to Late Entry"
-  },
-  {
    "fieldname": "column_break_qtbl",
    "fieldtype": "Column Break"
-  },
-  {
-   "default": "1",
-   "fieldname": "apply_early",
-   "fieldtype": "Check",
-   "label": "Apply to Early Exit"
   },
   {
    "fieldname": "column_break_ulys",
@@ -90,6 +69,7 @@
    "default": "1",
    "fieldname": "count_by_month",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Count Permissions Per Month"
   },
   {
@@ -100,13 +80,46 @@
    "fieldname": "remarks",
    "fieldtype": "Text Editor",
    "label": "Remarks"
+  },
+  {
+   "default": "2",
+   "description": "Max Minutes per request",
+   "fieldname": "max_minutes_per_permission",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Max Minutes Per Permission ",
+   "non_negative": 1,
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_late_entry",
+   "fieldtype": "Check",
+   "label": "Allow Late Entry Permission"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_early_exit",
+   "fieldtype": "Check",
+   "label": "Allow Early Exit Permission"
+  },
+  {
+   "fieldname": "column_break_yard",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_partial_coverage",
+   "fieldtype": "Check",
+   "label": "Allow Partial Coverage"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-01-16 18:22:07.014267",
+ "modified": "2026-07-03 00:46:24.882741",
  "modified_by": "Administrator",
  "module": "Go Hrms",
  "name": "Attendance Permission Settings",

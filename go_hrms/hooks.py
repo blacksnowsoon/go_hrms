@@ -11,7 +11,13 @@ fixtures=[
 	"Employee Feedback Criteria",
 	"Appraisal Template",
 	"Translation",
-	"Client Script"
+	"Client Script",
+	{
+		"dt": "Workflow",
+		"filters": {
+			"name" : ["in", ["Attendance Permission Workflow"]]
+		}
+	}
 ]
 # Apps
 # ------------------
