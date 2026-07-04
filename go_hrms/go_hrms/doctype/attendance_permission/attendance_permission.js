@@ -16,7 +16,7 @@ frappe.ui.form.on("Attendance Permission", {
 	async refresh(frm) {
 		if (frm.doc.docstatus === 0) {
 			if (frm.doc.employee && frm.doc.permission_date && (!frm.employee_shifts || !frm.employee_shifts.length)) {
-				await fetch_employee_shift(frm);
+				await fetch_employee_shift(frm, false);
 			}
 			setup_queries(frm);
 		}
@@ -150,7 +150,7 @@ function configure_permission_type(frm) {
 }
 
 // fetch employee shift assignment based on permission date
-async function fetch_employee_shift(frm) {
+async function fetch_employee_shift(frm, set_defaults = true) {
 	await frappe.db.get_list("Shift Assignment", {
 		filters: {
 			employee: frm.doc.employee,
@@ -168,15 +168,19 @@ async function fetch_employee_shift(frm) {
 			frm.employee_shifts = r;
 			setup_queries(frm);
 
-			const shift = r[0];
-			frm.set_value("shift_type", shift.shift_type);
-			frm.set_value("shift_assignment", shift.name);
+			if (set_defaults) {
+				const shift = r[0];
+				frm.set_value("shift_type", shift.shift_type);
+				frm.set_value("shift_assignment", shift.name);
+			}
 			frm.set_df_property("shift_assignment", "read_only", 0);
 		} else {
 			frm.employee_shifts = [];
 			setup_queries(frm);
-			frappe.msgprint(__("No active Shift Assignment found for this employee on the selected date."));
-			reset_form(frm);
+			if (set_defaults) {
+				frappe.msgprint(__("No active Shift Assignment found for this employee on the selected date."));
+				reset_form(frm);
+			}
 		}
 	});
 }
