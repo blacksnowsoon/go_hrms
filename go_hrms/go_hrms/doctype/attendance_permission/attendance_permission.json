@@ -13,14 +13,18 @@
   "column_break_ncum",
   "company",
   "department",
-  "permission_details_section",
-  "permission_date",
-  "from_time",
-  "to_time",
-  "duration",
-  "column_break_vebi",
-  "permission_type",
   "reason",
+  "permission_details_section",
+  "column_break_vebi",
+  "permission_date",
+  "shift_assignment",
+  "permitted_check_in_until",
+  "permitted_check_out_from",
+  "column_break_bgth",
+  "permission_type",
+  "shift_type",
+  "shift_start_time",
+  "shift_end_time",
   "section_break_ljfc",
   "approver",
   "column_break_ishq",
@@ -89,25 +93,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "from_time",
-   "fieldtype": "Time",
-   "label": "From Time",
-   "reqd": 1
-  },
-  {
-   "fieldname": "to_time",
-   "fieldtype": "Time",
-   "label": "To Time",
-   "reqd": 1
-  },
-  {
-   "fieldname": "duration",
-   "fieldtype": "Float",
-   "label": "Duration (Hours)",
-   "precision": "2",
-   "read_only": 1
-  },
-  {
    "fieldname": "column_break_vebi",
    "fieldtype": "Column Break"
   },
@@ -115,13 +100,13 @@
    "fieldname": "permission_type",
    "fieldtype": "Select",
    "label": "Permission Type",
-   "options": "Late Entry\nEarly Exit"
+   "options": "\nLate Entry\nEarly Exit",
+   "reqd": 1
   },
   {
    "fieldname": "reason",
-   "fieldtype": "Small Text",
-   "label": "Reason",
-   "reqd": 1
+   "fieldtype": "Data",
+   "label": "Reason"
   },
   {
    "fieldname": "section_break_ljfc",
@@ -149,13 +134,58 @@
    "fieldname": "rejected_reason",
    "fieldtype": "Small Text",
    "label": "Rejected Reason"
+  },
+  {
+   "fieldname": "shift_assignment",
+   "fieldtype": "Link",
+   "label": "Shift Assignment",
+   "options": "Shift Assignment",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "permitted_check_in_until",
+   "fieldtype": "Time",
+   "label": "Permitted Check-in Until",
+   "read_only": 1
+  },
+  {
+   "fieldname": "permitted_check_out_from",
+   "fieldtype": "Time",
+   "label": "Permitted Check-out From",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_bgth",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shift_type",
+   "fieldtype": "Link",
+   "label": "Shift Type",
+   "options": "Shift Type",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "shift_type.start_time",
+   "fieldname": "shift_start_time",
+   "fieldtype": "Time",
+   "label": "Shift Start Time",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "shift_type.end_time",
+   "fieldname": "shift_end_time",
+   "fieldtype": "Time",
+   "label": "Shift End Time",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-06-25 10:05:49.888027",
+ "modified": "2026-07-04 17:31:14.758552",
  "modified_by": "Administrator",
  "module": "Go Hrms",
  "name": "Attendance Permission",
