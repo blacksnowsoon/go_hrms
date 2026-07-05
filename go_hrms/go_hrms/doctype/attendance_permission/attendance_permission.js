@@ -64,6 +64,9 @@ frappe.ui.form.on("Attendance Permission", {
 			frm.set_value("permission_date", null);
 		} else if (employee && permission_date) {
 			await fetch_employee_shift(frm);
+			if (frm.is_new() || frm.doc.docstatus === 0) {
+				await check_max_permissions_limit(frm);
+			}
 		} else {
 			reset_form(frm);
 		}
@@ -280,19 +283,22 @@ async function fetch_and_render_attendance_stats(frm) {
 		await load_settings(frm);
 	}
 
-	let effective_from = frm.permission_settings && frm.permission_settings.effective_from;
-	if (!effective_from) {
+	// let effective_from = frm.permission_settings && frm.permission_settings.effective_from;
+	// if (!effective_from) {
 		// Fallback to January of current year if effective_from is not set
 		const current_year = new Date().getFullYear();
-		effective_from = `${current_year}-01-01`;
-	}
+		let effective_from = `${current_year}-01-01`;
+	// }
 
 	const parts = effective_from.split("-");
 	const start_date = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, 1);
 
+	const today = new Date();
+	const today_year_month = today.getFullYear() * 12 + today.getMonth();
+
 	const months = [];
 	let current = new Date(start_date);
-	for (let i = 0; i < 12; i++) {
+	while (current.getFullYear() * 12 + current.getMonth() <= today_year_month) {
 		months.push({
 			year: current.getFullYear(),
 			month: current.getMonth(),
@@ -303,11 +309,10 @@ async function fetch_and_render_attendance_stats(frm) {
 	}
 
 	const first_month_start = new Date(start_date.getFullYear(), start_date.getMonth(), 1);
-	const thirteenth_month_start = new Date(start_date.getFullYear(), start_date.getMonth() + 12, 1);
-	const twelfth_month_end = new Date(thirteenth_month_start.getTime() - 24 * 60 * 60 * 1000);
+	const last_month_end = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
 	const start_date_str = format_date_to_yyyy_mm_dd(first_month_start);
-	const end_date_str = format_date_to_yyyy_mm_dd(twelfth_month_end);
+	const end_date_str = format_date_to_yyyy_mm_dd(last_month_end);
 
 	const permissions = await frappe.db.get_list("Attendance Permission", {
 		filters: {
@@ -473,4 +478,44 @@ function format_date_to_yyyy_mm_dd(date) {
 	const mm = String(date.getMonth() + 1).padStart(2, "0");
 	const dd = String(date.getDate()).padStart(2, "0");
 	return `${yyyy}-${mm}-${dd}`;
+}
+
+async function check_max_permissions_limit(frm) {
+	if (!frm.doc.employee || !frm.doc.permission_date) return;
+
+	if (!frm.permission_settings) {
+		await load_settings(frm);
+	}
+
+	const max_allowed = frm.permission_settings ? frm.permission_settings.max_permisson_per_month : null;
+	if (max_allowed === null || max_allowed === undefined) return;
+
+	const date = frm.doc.permission_date;
+	const parts = date.split("-");
+	const year = parseInt(parts[0]);
+	const month = parseInt(parts[1]);
+	
+	const start_of_month = `${parts[0]}-${parts[1]}-01`;
+	const last_day = new Date(year, month, 0).getDate();
+	const end_of_month = `${parts[0]}-${parts[1]}-${String(last_day).padStart(2, "0")}`;
+
+	const permissions = await frappe.db.get_list("Attendance Permission", {
+		filters: {
+			employee: frm.doc.employee,
+			workflow_state: "Approved",
+			permission_date: ["between", [start_of_month, end_of_month]],
+			name: ["!=", frm.doc.name]
+		},
+		fields: ["name"]
+	});
+
+	const approved_count = permissions ? permissions.length : 0;
+	if (approved_count >= max_allowed) {
+		frappe.msgprint({
+			title: __("Limit Exceeded"),
+			indicator: "red",
+			message: __("Employee has already reached the maximum limit of {0} approved attendance permissions for this month.", [max_allowed])
+		});
+		frm.set_value("permission_date", null);
+	}
 }
