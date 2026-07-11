@@ -1,8 +1,69 @@
 
 {% if not jQuery.isEmptyObject(data) %}
 
+<style>
+    .permission-dashboard-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+        margin-top: 4px;
+    }
 
-<table class="table table-bordered small">
+    .permission-dashboard-table th,
+    .permission-dashboard-table td {
+        border: 1px solid var(--border-color, #d1d8dd);
+        padding: 5px 8px;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .permission-dashboard-table thead th {
+        background: var(--subtle-fg, #f4f5f6);
+        font-weight: 600;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+
+    .permission-dashboard-table thead th.row-label {
+        text-align: left;
+        min-width: 90px;
+    }
+
+    .permission-dashboard-table tbody td.row-label {
+        text-align: left;
+        font-weight: 500;
+        background: var(--subtle-fg, #f4f5f6);
+    }
+
+    /* Status row colour hints */
+    .permission-dashboard-table tr.row-allocated td {
+        font-weight: 700;
+    }
+
+    .permission-dashboard-table tr.row-approved td.val {
+        color: var(--green-600, #2e8546);
+    }
+
+    .permission-dashboard-table tr.row-open td.val {
+        color: var(--blue-600, #1f5eab);
+    }
+
+    .permission-dashboard-table tr.row-rejected td.val {
+        color: var(--red-500, #c0392b);
+    }
+
+    .permission-dashboard-table tr.row-cancelled td.val {
+        color: var(--gray-500, #6c7680);
+    }
+
+    .permission-dashboard-table tr.row-balance td.val {
+        font-weight: 700;
+        color: var(--green-700, #1e6e38);
+    }
+</style>
+
+<table class="table table-bordered small permission-dashboard-table">
     <thead>
         <tr>
             <th class="row-label">{{ __("") }}</th>
