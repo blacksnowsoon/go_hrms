@@ -9,7 +9,7 @@
   "max_permisson_per_month",
   "allow_retroactive",
   "column_break_znws",
-  "effective_from",
+  "linked_leave_period",
   "applicability_rules_section",
   "allow_late_entry",
   "column_break_qtbl",
@@ -46,11 +46,6 @@
    "fieldname": "allow_retroactive",
    "fieldtype": "Check",
    "label": "Allow Retroactive Permission"
-  },
-  {
-   "fieldname": "effective_from",
-   "fieldtype": "Date",
-   "label": "Effective From"
   },
   {
    "fieldname": "applicability_rules_section",
@@ -113,13 +108,21 @@
    "fieldname": "allow_partial_coverage",
    "fieldtype": "Check",
    "label": "Allow Partial Coverage"
+  },
+  {
+   "fieldname": "linked_leave_period",
+   "fieldtype": "Link",
+   "label": "Linked Leave Period",
+   "link_filters": "[[\"Leave Period\",\"is_active\",\"=\",1]]",
+   "options": "Leave Period",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-07-03 00:46:24.882741",
+ "modified": "2026-07-11 18:54:36.460704",
  "modified_by": "Administrator",
  "module": "Go Hrms",
  "name": "Attendance Permission Settings",

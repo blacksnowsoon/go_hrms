@@ -1,0 +1,42 @@
+<h1>Attendance Permission Notification</h1>
+<h3>Details:</h3>
+
+<table class="table table-bordered small" style="max-width: 500px;">
+    <tr>
+        <td>Employee</td>
+        <td>{{employee_name}}</td>
+    </tr>
+    <tr>
+        <td>Permission Type</td>
+        <td>{{permission_type}}</td>
+    </tr>
+    <tr>
+        <td>Permission Date</td>
+        <td>{{permission_date}}</td>
+    </tr>
+    <tr>
+        <td>Shift Assignment</td>
+        <td>{{shift_assignment}}</td>
+    </tr>
+    <tr>
+        <td>Shift Type</td>
+        <td>{{shift_type}}</td>
+    </tr>
+    <tr>
+        <td>Shift Start Time</td>
+        <td>{{shift_start_time}}</td>
+    </tr>
+    <tr>
+        <td>Shift End Time</td>
+        <td>{{shift_end_time}}</td>
+    </tr>
+    <tr>
+        <td>Status</td>
+        <td>{{status}}</td>
+    </tr>
+</table>
+
+{% set doc_link = frappe.utils.get_url_to_form('Attendance Permission', name) %}
+
+<br><br>
+<a class="btn btn-primary" href="{{ doc_link }}" target="_blank">{{ _('Open Now') }}</a>

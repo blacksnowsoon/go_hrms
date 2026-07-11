@@ -3,99 +3,152 @@
 
 frappe.ui.form.on("Attendance Permission", {
 	// Triggered once when the form is created for the first time
-	setup(frm){
+	setup(frm) {
+		setup_queries(frm)
 	},
 	// Triggered before the form is about to load
-	before_load(frm){
-
+	async before_load(frm){
+		await load_settings(frm)
 	},
 	// Triggered when the form is loaded and is about to render
-	async onload(frm) {
-		if (frm.is_new() || frm.doc.docstatus === 0) {
-			await load_settings(frm);
+	onload(frm) {
+		if (!frm.doc.posting_date) {
+			frm.set_value("posting_date", frappe.datetime.get_today());
 		}
-		if (frm.is_new()) {
-			await setup_current_user(frm);
-			configure_permission_type(frm);
+		if (frm.doc.docstatus == 0) {
+			return frappe.call({
+				method: "hrms.hr.doctype.leave_application.leave_application.get_mandatory_approval",
+				args: {
+					doctype: "Leave Application",
+				},
+				callback: function (r) {
+					if (!r.exc && r.message) {
+						frm.toggle_reqd("leave_approver", true);
+					}
+				},
+			});
 		}
-		setup_queries(frm);
 	},
 	// Triggered when the form is loaded and rendered.
-	async refresh(frm) {
-		if (frm.doc.docstatus === 0) {
-			if (frm.doc.employee && frm.doc.permission_date && (!frm.employee_shifts || !frm.employee_shifts.length)) {
-				await fetch_employee_shift(frm, false);
-			}
-			setup_queries(frm);
+	refresh(frm) {
+		frm.set_intro("");
+		if (frm.doc.__islocal && !in_list(frappe.user_roles, "Employee")) {
+			frm.set_intro(__("Fill the form and save it"));
+		} else if (
+			frm.perm[0] &&
+			frm.perm[0].submit &&
+			!frm.is_dirty() &&
+			!frm.is_new() &&
+			!frappe.model.has_workflow(frm.doctype) &&
+			frm.doc.docstatus === 0
+		) {
+			frm.set_intro(__("Submit this Attendance Permission to confirm."));
 		}
-		await fetch_and_render_attendance_stats(frm);
 	},
 	// Triggered after the form is loaded and rendered
 	onload_post_render(frm){
+	},
+	make_dashboard(frm) {
+		let permission_details;
 
+		if (frm.doc.employee) {
+			frappe.call({
+				method: "go_hrms.go_hrms.doctype.attendance_permission.attendance_permission_dashboard.get_permission_summary",
+				async: false,
+				args: {
+					employee: frm.doc.employee,
+				},
+				callback: function (r) {
+					console.log(r)
+					if (!r.exc) {
+						permission_details = r.message;
+					}
+				},
+			});
+			let allowed_permission_types = Object.keys(permission_details);
+			console.log("alowed _permission_types", allowed_permission_types)
+			$("div").remove(".form-dashboard-section.custom");
+
+			frm.dashboard.add_section(
+				frappe.render_template("attendance_permission_dashboard", {
+					data: permission_details,
+				}),
+				__("Permission Summary"),
+			);
+			frm.dashboard.show();
+			;
+			
+			// frm.set_query("permission_type", function () {
+			// 	return {
+			// 		filters: [["permission_type_name", "in", allowed_permission_types]],
+			// 	};
+			// });
+		}
 	},
-	async employee(frm) {
-		frm.employee_shifts = [];
+	async set_employee(frm) {
+		if (frm.doc.employee) return;
+
+		const employee = await hrms.get_current_employee(frm);
+		if (employee) {
+			frm.set_value("employee", employee);
+		}
+	},
+	employee(frm) {
 		frm.set_value("permission_date", null);
-		await fetch_and_render_attendance_stats(frm);
+		frm.trigger("make_dashboard");
 	},
-	async after_save(frm) {
-		await fetch_and_render_attendance_stats(frm);
+	after_save(frm) {
+		
 	},
-	async on_submit(frm) {
-		await fetch_and_render_attendance_stats(frm);
+	on_submit(frm) {
+		
 	},
-	async after_cancel(frm) {
-		await fetch_and_render_attendance_stats(frm);
+	after_cancel(frm) {
+		
 	},
 
 	permission_type(frm) {
-		if (frm.doc.permission_date) {
-			adjust_shift_time(frm);
-		}
+		
 	},
 
-	async permission_date(frm) {
-		const employee = frm.doc.employee;
-		const permission_date = frm.doc.permission_date;
-
-		if (permission_date && !employee) {
-			frappe.msgprint(__("Please select an employee first"));
-			frm.set_value("permission_date", null);
-		} else if (employee && permission_date) {
-			await fetch_employee_shift(frm);
-			if (frm.is_new() || frm.doc.docstatus === 0) {
-				await check_max_permissions_limit(frm);
-			}
-		} else {
-			reset_form(frm);
+	permission_date(frm) {
+		if (!frm.doc.employee) {
+			
+			frappe.msgprint(__("Please select an Employee first."));
+			return;
 		}
 	},
 
 	shift_assignment(frm) {
-		if (frm.doc.shift_assignment && (frm.employee_shifts || []).length) {
-			const selected_shift = frm.employee_shifts.find(s => s.name === frm.doc.shift_assignment);
-			if (selected_shift) {
-				frm.set_value("shift_type", selected_shift.shift_type);
-			}
-			frm.set_df_property("shift_type", "read_only", 0);
-		} else {
-			frm.set_value("shift_type", null);
-			frm.set_df_property("shift_type", "read_only", 1);
-		}
+		
 	},
 
 	shift_start_time(frm) {
-		adjust_shift_time(frm);
+		
 	},
 
 	shift_end_time(frm) {
-		adjust_shift_time(frm);
+		
+	},
+	validate(frm) {
+		
 	}
 });
 
-// Setup filters on link fields based on fetched shifts
+// Setup filters on link fields
 function setup_queries(frm) {
+	frm.set_query("approver", function () {
+		return {
+			query: "hrms.hr.doctype.department_approver.department_approver.get_approvers",
+			filters: {
+				employee: frm.doc.employee,
+				doctype: "Leave Application"
+			}
+		}
+	})
+
+	frm.set_query("employee", erpnext.queries.employee);
+
 	frm.set_query("shift_assignment", () => {
 		const shift_names = (frm.employee_shifts || []).map(s => s.name);
 		return {
@@ -113,6 +166,7 @@ function setup_queries(frm) {
 			}
 		};
 	});
+	
 }
 
 // load the global settings of Attendance Permission
@@ -519,3 +573,30 @@ async function check_max_permissions_limit(frm) {
 		frm.set_value("permission_date", null);
 	}
 }
+
+frappe.tour["Attendance Permission"] = [
+	{
+		fieldname: "employee",
+		title: "Employee",
+		description: __("Select the Employee."),
+	},
+	{
+		fieldname: "permission_type",
+		title: "Permission Type",
+		description: __(
+			"Select type of permission the employee wants to apply for, like Late Entry, Early Exit, etc.",
+		),
+	},
+	{
+		fieldname: "permission_date",
+		title: "Permission Date",
+		description: __("Select the date for your Attendance Permission."),
+	},
+	{
+		fieldname: "approver",
+		title: "Approver",
+		description: __(
+			"Select your Attendance Approver i.e. the person who approves or rejects your attendance permissions.",
+		),
+	},
+];

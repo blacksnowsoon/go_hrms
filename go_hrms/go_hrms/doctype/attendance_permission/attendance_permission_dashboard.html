@@ -1,0 +1,63 @@
+
+{% if not jQuery.isEmptyObject(data) %}
+
+
+<table class="table table-bordered small">
+    <thead>
+        <tr>
+            <th class="row-label">{{ __("") }}</th>
+            {% for(const key of Object.keys(data)) { %}
+            <th>{%= key %}</th>
+            {% } %}
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Allocated -->
+        <tr class="row-allocated">
+            <td class="row-label">{{ __("Allocated") }}</td>
+            {% for(const key of Object.keys(data)) { %}
+            <td class="val">{{ data[key].allocated }}</td>
+            {% } %}
+        </tr>
+        <!-- Open -->
+        <tr class="row-open">
+            <td class="row-label">{{ __("Open") }}</td>
+            {% for(const key of Object.keys(data)) { %}
+                <td class="val">{{ data[key].Open }}</td>
+            {% } %}
+        </tr>
+        <!-- Approved -->
+        <tr class="row-approved">
+            <td class="row-label">{{ __("Approved") }}</td>
+            {% for(const key of Object.keys(data)) { %}
+                <td class="val">{{ data[key].Approved }}</td>
+            {% } %}
+        </tr>   
+        <!-- Rejected -->
+        <tr class="row-rejected">
+            <td class="row-label">{{ __("Rejected") }}</td>
+            {% for(const key of Object.keys(data)) { %}
+                <td class="val">{{ data[key].Rejected }}</td>
+            {% } %}
+        </tr>
+        <!-- Cancelled -->
+        <tr class="row-cancelled">
+            <td class="row-label">{{ __("Cancelled") }}</td>
+            {% for(const key of Object.keys(data)) { %}
+                <td class="val">{{ data[key].Cancelled }}</td>
+            {% } %}
+        </tr>
+        <!-- Balance -->
+        <tr class="row-balance">
+            <td class="row-label">{{ __("Balance") }}</td>
+            {% for(const key of Object.keys(data)) { %}
+                <td class="val">{{ data[key].balance }}</td>
+            {% } %}
+        </tr>
+        
+
+    </tbody>
+</table>
+{% else %}
+    <p style="margin-top: 30px;"> {{ __("No Allocated Permissions Found.") }} </p>
+{% endif %}
