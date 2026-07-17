@@ -34,6 +34,10 @@ def get_permission_summary(employee: str) -> dict:
 		frappe.throw(_("No Linked Leave Period configured in Attendance Permission Settings."))
 
 	# ── 2. Get the leave period's start date ────────────────────────────────
+	is_active_leave_period = frappe.db.get_value("Leave Period", leave_period_name, "is_active")
+	if is_active_leave_period == 0:
+		frappe.throw(_("Leave Period {0} is not active.").format(leave_period_name))
+
 	period_from_date = frappe.db.get_value("Leave Period", leave_period_name, "from_date")
 	if not period_from_date:
 		frappe.throw(_("Leave Period {0} has no start date.").format(leave_period_name))
@@ -55,7 +59,7 @@ def get_permission_summary(employee: str) -> dict:
 
 	# ── 4. Initialise every month slot with zero counts ──────────────────────
 	summary: dict = {
-		m: {"allocated": allocated, **{s: 0 for s in STATUSES}}
+		m: {"allocated": allocated, **{s: 0 for s in STATUSES},"drafts": []}
 		for m in months
 	}
 
@@ -67,20 +71,23 @@ def get_permission_summary(employee: str) -> dict:
 			"docstatus": ["!=", 2],  # exclude amended/trashed
 			"permission_date": [">=", period_from_date],
 		},
-		fields=["permission_date", "status"],
+		fields=["permission_date", "status", "permission_type"],
 		order_by="permission_date asc",
 	)
 
 	# ── 6. Tally records into their month buckets ────────────────────────────
 	for rec in records:
 		d = getdate(rec.permission_date)
+		pt = rec.permission_type
 		# Only count up to the current month
 		if (d.year, d.month) > (current_date.year, current_date.month):
 			continue
 		label = f"{_get_month_abbr(d.month)}-{str(d.year)[-2:]}"
 		status = rec.status or "Open"
 		if label in summary and status in STATUSES:
-			summary[label][status] += 1
+			summary[label][status] += 1 
+			if status == "Open" :
+				summary[label]["drafts"].append({"day": d.day, "type":pt}) 
 
 	# ── 7. Compute balance = allocated − Approved (floor at 0) ───────────────
 	for month_data in summary.values():

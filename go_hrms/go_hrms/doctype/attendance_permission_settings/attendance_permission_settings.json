@@ -10,6 +10,9 @@
   "allow_retroactive",
   "column_break_znws",
   "linked_leave_period",
+  "send_permission_notification",
+  "status_notification_template",
+  "approval_notification_template",
   "applicability_rules_section",
   "allow_late_entry",
   "column_break_qtbl",
@@ -116,13 +119,31 @@
    "link_filters": "[[\"Leave Period\",\"is_active\",\"=\",1]]",
    "options": "Leave Period",
    "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "send_permission_notification",
+   "fieldtype": "Check",
+   "label": "Send Permission Notification"
+  },
+  {
+   "fieldname": "status_notification_template",
+   "fieldtype": "Link",
+   "label": "Status Notification Template",
+   "options": "Email Template"
+  },
+  {
+   "fieldname": "approval_notification_template",
+   "fieldtype": "Link",
+   "label": "Approval Notification Template",
+   "options": "Email Template"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-07-11 18:54:36.460704",
+ "modified": "2026-07-16 23:29:17.883052",
  "modified_by": "Administrator",
  "module": "Go Hrms",
  "name": "Attendance Permission Settings",
