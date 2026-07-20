@@ -25,6 +25,7 @@
   "shift_type",
   "shift_start_time",
   "shift_end_time",
+  "attendance_marked",
   "section_break_ljfc",
   "approver",
   "approver_name",
@@ -197,13 +198,21 @@
    "fieldname": "follow_via_email",
    "fieldtype": "Check",
    "label": "Follow via Email"
+  },
+  {
+   "fieldname": "attendance_marked",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Attendance Marked",
+   "options": "Attendance",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-07-11 16:36:34.888140",
+ "modified": "2026-07-17 23:11:21.809032",
  "modified_by": "Administrator",
  "module": "Go Hrms",
  "name": "Attendance Permission",

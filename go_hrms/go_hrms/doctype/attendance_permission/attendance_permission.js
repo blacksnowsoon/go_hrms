@@ -340,7 +340,10 @@ function validate_permission(frm) {
 			err_message_dict("duplicate_permission_found")
 			return false
 		}
-
+	}
+	if (open_permissions == 2) {
+		err_message_dict("max_draft_application")
+		return false
 	}
 
 	return true
@@ -413,6 +416,11 @@ const err_message_states = {
 		title: __("Duplicate Permission"),
 		indicator: "red",
 		message: __("Attendance Permission found with the same date")
+	},
+	max_draft_application: {
+		title: __("Max Draft Application"),
+		indicator: "red",
+		message: __("There are 2 attendance permission in Draft mode!")
 	}
 }
 // ---------------------------------
