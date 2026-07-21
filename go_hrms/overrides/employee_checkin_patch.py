@@ -11,7 +11,7 @@ from hrms.hr.doctype.shift_type.shift_type import (
 from go_hrms.go_hrms.doctype.attendance_permission.attendance_permission 
 import add_remove_attendance_logic
 
-_original_mark_attendance_and_link_log = shift_type.mark_attendance_and_link_log
+_original_mark_attendance_and_link_log = employee_checkin.mark_attendance_and_link_log
 
 
 def custom_mark_attendance_and_link_log(logs,
@@ -101,6 +101,6 @@ def custom_mark_attendance_and_link_log(logs,
 		frappe.throw(_("{} is an invalid Attendance Status.").format(attendance_status))
 
 # Patch 1: patch the mark_attendance_and_link_log to apply the attendance permission
-shift_type.mark_attendance_and_link_log = custom_mark_attendance_and_link_log
 employee_checkin.mark_attendance_and_link_log = custom_mark_attendance_and_link_log
+shift_type.mark_attendance_and_link_log = custom_mark_attendance_and_link_log
 	
