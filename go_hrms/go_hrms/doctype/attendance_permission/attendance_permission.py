@@ -43,7 +43,6 @@ class AttendancePermission(Document, PWANotificationsMixin):
 		if self.status in ["Open", "Cancelled"]:
 			frappe.throw(_("Only Permissions with status 'Approved' and 'Rejected' can be submitted"))
 		self.update_attendance()
-
 		self.reload()
 		
 		#notify permission applier about approval
@@ -216,80 +215,82 @@ def add_remove_attendance_logic(attendance, att_permission):
 	late_entry = "Late Entry"
 	early_exit = "Early Exit"
 	permission_type = att_permission.permission_type
-    if permission_type not in [late_entry, early_exit]:
-        return attendance
+
+	if not permission_type:
+		return attendance
+	if permission_type not in [late_entry , early_exit]:
+		return attendance
 
 	permitted_time = (
 		att_permission.get("permitted_check_in_until") 
 		if permission_type == late_entry 
 		else att_permission.get("permitted_check_out_from")
 	)
-	
-    if permission_type == late_entry:
-        handle_late_entry_permission(attendance, permitted_time)
-        
-    elif permission_type == early_exit:
-        handle_early_exit_permission(attendance, permitted_time)
 
-    return attendance
+	if permission_type == late_entry:
+		handle_late_entry_permission(attendance, permitted_time)
+	
+	elif permission_type == early_exit:
+		handle_early_exit_permission(attendance, permitted_time)
+	return attendance
 
 # --- Permission Handlers ---
 
 def handle_late_entry_permission(attendance, permitted_time):
-    """Handles logic variation when adding or removing Late Entry permissions."""
-    if permitted_time:
-        attendance.custom_allowed_in_time_until = permitted_time
-        if get_time(attendance.in_time) <= get_time(permitted_time):
-            attendance.late_entry = 0
-    else:
-        attendance.custom_allowed_in_time_until = None
-        attendance.late_entry = 1 if calculate_fallback_late_entry(attendance) else 0
+	"""Handles logic variation when adding or removing Late Entry permissions."""
+	if permitted_time:
+		attendance.custom_allowed_in_time_until = permitted_time
+		if get_time(attendance.in_time) <= get_time(permitted_time):
+			attendance.late_entry = 0
+	else:
+		attendance.custom_allowed_in_time_until = None
+		attendance.late_entry = 1 if calculate_fallback_late_entry(attendance) else 0
 
 
 def handle_early_exit_permission(attendance, permitted_time):
-    """Handles logic variation when adding or removing Early Exit permissions."""
-    if permitted_time:
-        attendance.custom_allowed_out_time_from = permitted_time
-        if get_time(attendance.out_time) >= get_time(permitted_time):
-            attendance.early_exit = 0
-    else:
-        attendance.custom_allowed_out_time_from = None
-        attendance.early_exit = 1 if calculate_fallback_early_exit(attendance) else 0
+	"""Handles logic variation when adding or removing Early Exit permissions."""
+	if permitted_time:
+		attendance.custom_allowed_out_time_from = permitted_time
+		if get_time(attendance.out_time) >= get_time(permitted_time):
+			attendance.early_exit = 0
+	else:
+		attendance.custom_allowed_out_time_from = None
+		attendance.early_exit = 1 if calculate_fallback_early_exit(attendance) else 0
 
 
 # --- Core Shift Math Engine ---
 
 def calculate_fallback_late_entry(attendance) -> bool:
-    """Calculates if an attendance record should be marked late based on its shift."""
-    if not (attendance.shift and attendance.in_time):
-        return False
-        
-    shift = frappe.get_doc("Shift Type", attendance.shift)
-    if not cint(shift.enable_late_entry_marking):
-        return False
+	"""Calculates if an attendance record should be marked late based on its shift."""
+	if not (attendance.shift and attendance.in_time):
+		return False
 
-    shift_start = datetime.combine(getdate(attendance.attendance_date), get_time(shift.start_time))
-    late_limit = shift_start + timedelta(minutes=cint(shift.late_entry_grace_period))
-    
-    return get_datetime(attendance.in_time) > late_limit
+	shift = frappe.get_doc("Shift Type", attendance.shift)
+	if not cint(shift.enable_late_entry_marking):
+		return False
+
+	shift_start = datetime.combine(getdate(attendance.attendance_date), get_time(shift.start_time))
+	late_limit = shift_start + timedelta(minutes=cint(shift.late_entry_grace_period))
+
+	return get_datetime(attendance.in_time) > late_limit
 
 
 def calculate_fallback_early_exit(attendance) -> bool:
-    """Calculates if an attendance record should be marked as an early exit based on its shift."""
-    if not (attendance.shift and attendance.out_time):
-        return False
-        
-    shift = frappe.get_doc("Shift Type", attendance.shift)
-    if not cint(shift.enable_early_exit_marking):
-        return False
+	"""Calculates if an attendance record should be marked as an early exit based on its shift."""
+	if not (attendance.shift and attendance.out_time):
+		return False
 
-    start_time = get_time(shift.start_time)
-    end_time = get_time(shift.end_time)
-    
-    # Check for overnight cross-day shifts smoothly
-    days_to_add = 1 if start_time >= end_time else 0
-    shift_end = datetime.combine(getdate(attendance.attendance_date) + timedelta(days=days_to_add), end_time)
-    
-    early_limit = shift_end - timedelta(minutes=cint(shift.early_exit_grace_period))
-    
-    return get_datetime(attendance.out_time) < early_limit
+	shift = frappe.get_doc("Shift Type", attendance.shift)
+	if not cint(shift.enable_early_exit_marking):
+		return False
+
+	start_time = get_time(shift.start_time)
+	end_time = get_time(shift.end_time)
+
+	# Check for overnight cross-day shifts smoothly
+	days_to_add = 1 if start_time >= end_time else 0
+	shift_end = datetime.combine(getdate(attendance.attendance_date) + timedelta(days=days_to_add), end_time)
+
+	early_limit = shift_end - timedelta(minutes=cint(shift.early_exit_grace_period))
+
+	return get_datetime(attendance.out_time) < early_limit

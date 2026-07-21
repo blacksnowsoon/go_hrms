@@ -1,5 +1,6 @@
 
 from hrms.hr.doctype.shift_type import shift_type
+import hrms.hr.doctype.employee_checkin import employee_checkin
 from hrms.hr.doctype.shift_type.shift_type import (
     skip_attendance_in_checkins,
     get_existing_half_day_attendance,
@@ -101,4 +102,5 @@ def custom_mark_attendance_and_link_log(logs,
 
 # Patch 1: patch the mark_attendance_and_link_log to apply the attendance permission
 shift_type.mark_attendance_and_link_log = custom_mark_attendance_and_link_log
+employee_checkin.mark_attendance_and_link_log = custom_mark_attendance_and_link_log
 	
