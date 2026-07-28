@@ -13,12 +13,6 @@ fixtures=[
 	"Translation",
 	"Client Script",
 	{
-		"dt": "Workflow",
-		"filters": {
-			"name" : ["in", ["Attendance Permission Workflow"]]
-		}
-	},
-	{
 		"dt": "Email Template",
 		"filters": {
 			"name" : ["in", ["Attendance Permission Application", "Attendance Permission Approval Notification", "Attendance Permission Status Notification"]]

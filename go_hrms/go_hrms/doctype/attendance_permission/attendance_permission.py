@@ -20,6 +20,12 @@ class AttendancePermission(Document, PWANotificationsMixin):
 	def get_feed(self):
 		return _("{0}: From {0} of type {1}").format(self.employee_name, self.permission_type)
 	
+	def before_save(self):
+		if self.permission_type == "Late Entry":
+			self.permitted_check_out_from = None
+		elif self.permission_type == "Early Exit":
+			self.permitted_check_in_until = None
+
 	def after_insert(self):
 		if frappe.db.get_single_value("Attendance Permission Settings", "send_permission_notification"):
 			self.notify_permission_approver()
